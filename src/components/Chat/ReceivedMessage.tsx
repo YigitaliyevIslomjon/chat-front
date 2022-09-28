@@ -72,6 +72,7 @@ function ReceivedMessage({ socket }: SendMassageProps) {
 
   const handleRowClick: GridEventListener<"rowClick"> = (params) => {
     setRowMessage(params.row);
+    console.log(params.row);
     setResendMessageVisible(true);
   };
 

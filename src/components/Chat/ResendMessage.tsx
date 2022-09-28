@@ -76,7 +76,7 @@ function ResendMessage({
 
   const submitMessage = (data: MessageFormValues) => {
     messageUser(data);
-    socket.emit("send-message", { reader_id: data.reader_id });
+    socket.emit("send-message", { reader_id: data.sender_id });
   };
 
   return (
