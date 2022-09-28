@@ -75,6 +75,7 @@ function ResendMessage({
   };
 
   const submitMessage = (data: MessageFormValues) => {
+    console.log("data", data);
     messageUser(data);
     socket.emit("send-message", { reader_id: data.reader_id });
   };
@@ -91,7 +92,7 @@ function ResendMessage({
                 <Controller
                   control={control}
                   name="reader_id"
-                  defaultValue={rowMessage.sender_id}
+                  defaultValue={rowMessage.sender_id._id}
                   rules={{ required: "Recipient is required" }}
                   render={({ field: { onChange, value } }) => (
                     <Autocomplete
