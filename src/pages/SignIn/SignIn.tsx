@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Avatar, Box } from "@mui/material";
+import { Avatar, Box, Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useForm, Controller } from "react-hook-form";
 import TextField from "@mui/material/TextField";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import api from "../../utils/api";
 import { ToastContainer, toast } from "react-toastify";
 import LoadingButton from "@mui/lab/LoadingButton";
@@ -87,6 +87,17 @@ function SignIn() {
           >
             Sign In
           </LoadingButton>
+          <Grid container>
+            <Grid item xs>
+              Don't have an account ?
+            </Grid>
+            <Grid item>
+              <Link to="/sign-up" className="no-underline">
+                {" "}
+                Sign Up
+              </Link>
+            </Grid>
+          </Grid>
         </Box>
       </Box>
       <ToastContainer />
