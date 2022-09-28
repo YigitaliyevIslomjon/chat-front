@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import Layout from "./components/Layout/Layout";
+import SignIn from "./pages/SignIn/SignIn";
+import SignUp from "./pages/SignUp/SignUp";
+import AdminLayout from "./adminComponents/AdminLayout/AdminLayout";
+import User from "./pages/User/User";
+import Chat from "./pages/Chat/Chat";
 
 function App() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem("access_token")) {
+      navigate("/sign-in");
+    }
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Chat />} />
+          <Route path="*" element={<div>Not found</div>} />
+        </Route>
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="user" element={<User />} />
+          <Route path="*" element={<div>Not found</div>} />
+        </Route>
+      </Routes>
     </div>
   );
 }
