@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://app-like-gmail.herokuapp.coms/api/",
+  baseURL: "https://app-like-gmail.herokuapp.com/api/",
 });
 
 // Add a request interceptor
