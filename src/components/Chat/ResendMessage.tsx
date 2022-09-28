@@ -76,7 +76,7 @@ function ResendMessage({
 
   const submitMessage = (data: MessageFormValues) => {
     messageUser(data);
-    socket.emit("send-message", { reader_id: data.sender_id });
+    socket.emit("send-message", { reader_id: data.reader_id });
   };
 
   return (
@@ -91,13 +91,13 @@ function ResendMessage({
                 <Controller
                   control={control}
                   name="reader_id"
-                  defaultValue={rowMessage.reader_id}
+                  defaultValue={rowMessage.sender_id}
                   rules={{ required: "Recipient is required" }}
                   render={({ field: { onChange, value } }) => (
                     <Autocomplete
                       disabled
                       autoHighlight
-                      value={rowMessage.reader_id}
+                      value={rowMessage.sender_id}
                       onChange={(e, value) => {
                         onChange(value?._id);
                       }}
