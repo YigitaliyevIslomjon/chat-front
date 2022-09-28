@@ -75,7 +75,7 @@ function SignUp() {
                     required
                     fullWidth
                     helperText={errors.user_name && errors.user_name.message}
-                    label="user_name"
+                    label="name"
                     error={errors.user_name ? true : false}
                   />
                 )}
