@@ -104,6 +104,7 @@ function ReceivedMessage({ socket }: SendMassageProps) {
     return () => {
       socket.off("receive-message");
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
